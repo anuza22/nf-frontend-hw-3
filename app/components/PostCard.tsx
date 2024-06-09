@@ -27,6 +27,8 @@ const PostCard: React.FC = () => {
                       className="w-8 h-8 rounded-full"
                       src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
                       alt="Rounded avatar"
+                      width={32}  
+              height={32} 
                     />
                     <span className={"text-sm ml-4 " + (darkMode ? "text-gray-400" : "text-gray-600")}>
                       User ID: {post.userId}
@@ -48,6 +50,8 @@ const PostCard: React.FC = () => {
                         className="w-10 h-10 rounded"
                         src="https://png.pngtree.com/png-clipart/20191123/original/pngtree-view-icon-png-image_5196447.jpg"
                         alt="Default avatar"
+                        width={40}  
+              height={40} 
                       />
                       <span className={"text-sm ml-2 " + (darkMode ? "text-gray-400" : "text-gray-600")}>
                         {post.views}
@@ -59,6 +63,8 @@ const PostCard: React.FC = () => {
                           className="w-18 h-16 rounded"
                           src="https://static.vecteezy.com/system/resources/previews/019/860/328/original/like-and-dislike-icons-png.png"
                           alt="Default avatar"
+                          width={72}  
+              height={64} 
                         />
                         <span className={"text-sm ml-2 " + (darkMode ? "text-gray-300" : "text-black")}>
                           {post.reactions.likes}

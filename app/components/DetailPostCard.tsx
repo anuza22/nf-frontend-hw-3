@@ -34,6 +34,8 @@ const DetailPostCard: React.FC<DetailPostCardProps> = ({ post }) => {
             className="w-full h-64 object-cover rounded"
             src='https://t3.ftcdn.net/jpg/06/15/76/92/360_F_615769239_P34b7w4Tc2rHBIU87bV3OCsAinGaX1EL.jpg'
             alt="Post image"
+            width={500}  
+            height={300}  
           />
         </div>
         <div className="flex items-center mb-4">
@@ -41,6 +43,8 @@ const DetailPostCard: React.FC<DetailPostCardProps> = ({ post }) => {
             className="w-10 h-10 rounded-full"
             src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
             alt="User Avatar"
+            width={40}  
+            height={40} 
           />
         <span className={"text-sm ml-4 " + (darkMode ? "text-gray-400" : "text-gray-600")}>User ID: {post.userId}</span>
         </div>
@@ -51,12 +55,16 @@ const DetailPostCard: React.FC<DetailPostCardProps> = ({ post }) => {
               className="w-6 h-6 mr-2"
               src="https://static.vecteezy.com/system/resources/previews/019/860/328/original/like-and-dislike-icons-png.png"
               alt="Likes"
+              width={24}  
+              height={24} 
             />
           <span className={"text-sm mr-4 " + (darkMode ? "text-gray-400" : "text-gray-600")}>{post.reactions.likes}</span>
           <Image
               className="w-6 h-6 mr-2"
               src="https://static.vecteezy.com/system/resources/previews/019/860/328/original/like-and-dislike-icons-png.png"
               alt="Dislikes"
+              width={24}  
+              height={24} 
             />
           <span className={"text-sm " + (darkMode ? "text-gray-400" : "text-gray-600")}>{post.reactions.dislikes}</span>
           </div>
