@@ -51,29 +51,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       localStorage.setItem('token', response.data.token); 
       localStorage.setItem('refreshToken', response.data.refreshToken); 
       setUser(response.data);       
-        } catch (error) { 
-      console.error('Login failed', error); 
-      await loginWithDefaultUser();
-    } 
+        } catch (err){
+            console.log("Error");
+        }
   }; 
-
-  const loginWithDefaultUser = async () => {
-    try {
-      const response = await axios.get('https://dummyjson.com/users/1');
-      const defaultUser = {
-        id: response.data.id,
-        username: response.data.username,
-        email: response.data.email,
-        firstName: response.data.firstName,
-        lastName: response.data.lastName,
-      };
-      setUser(defaultUser);
-      localStorage.setItem('user', JSON.stringify(defaultUser));
-      router.push('/');
-    } catch (error) {
-      console.error('Default user login failed', error);
-    }
-  };
  
   const logout = () => { 
     setToken(null); 

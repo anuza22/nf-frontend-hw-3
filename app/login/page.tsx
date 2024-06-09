@@ -2,6 +2,7 @@
 
 import React, { useState, FormEvent } from 'react'; 
 import { useAuth } from '../context/AuthContext'; 
+import axios from 'axios';
 import { useTheme } from '../context/ThemeContext';
  
 const LoginPage: React.FC = () => { 
@@ -12,8 +13,28 @@ const LoginPage: React.FC = () => {
  
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) =>{ 
     event.preventDefault(); 
-    await login(username, password); 
-    window.location.href = '/posts';  }; 
+    try {
+      if (username) {
+        await login(username, password);
+      } else {
+        await loginWithDefaultUser(password);
+      }
+    } catch (err) {
+      console.error('Login failed', err);
+    }
+    window.location.href = '/posts';
+     }; 
+
+     const loginWithDefaultUser = async (password: string) => {
+      try {
+        const response = await axios.get('https://dummyjson.com/users/1');
+        const defaultUsername = response.data.username;
+  
+        await login(defaultUsername, password);
+      } catch (error) {
+        console.error('Default user login failed', error);
+      }
+    };
  
   return ( 
     <div>
