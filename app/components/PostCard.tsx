@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePosts } from '../context/PostContext';
 import { useTheme } from '../context/ThemeContext';
 import Button from './Button';
+import Image from 'next/image';
 
 const PostCard: React.FC = () => {
   const { posts } = usePosts();
@@ -22,7 +23,7 @@ const PostCard: React.FC = () => {
               <div className="md:flex">
                 <div className="p-4 w-full">
                   <div className="flex items-center">
-                    <img
+                    <Image
                       className="w-8 h-8 rounded-full"
                       src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
                       alt="Rounded avatar"
@@ -43,7 +44,7 @@ const PostCard: React.FC = () => {
                   </p>
                   <div className="flex justify-between items-center mt-4">
                     <div className="flex items-center">
-                      <img
+                      <Image
                         className="w-10 h-10 rounded"
                         src="https://png.pngtree.com/png-clipart/20191123/original/pngtree-view-icon-png-image_5196447.jpg"
                         alt="Default avatar"
@@ -54,7 +55,7 @@ const PostCard: React.FC = () => {
                     </div>
                     <div>
                       <div className="flex items-center">
-                        <img
+                        <Image
                           className="w-18 h-16 rounded"
                           src="https://static.vecteezy.com/system/resources/previews/019/860/328/original/like-and-dislike-icons-png.png"
                           alt="Default avatar"

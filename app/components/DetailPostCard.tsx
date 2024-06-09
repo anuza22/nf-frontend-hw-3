@@ -3,6 +3,7 @@
 import React from 'react';
 import Button from './Button';
 import { useTheme } from '../context/ThemeContext';
+import Image from 'next/image';
 
 interface Post {
   id: number;
@@ -29,14 +30,14 @@ const DetailPostCard: React.FC<DetailPostCardProps> = ({ post }) => {
       }>
         <h1 className={"text-3xl font-bold mb-4 " + (darkMode ? "text-white" : "text-indigo-700")}>{post.title}</h1>
         <div className="mb-4">
-          <img
+          <Image
             className="w-full h-64 object-cover rounded"
             src='https://t3.ftcdn.net/jpg/06/15/76/92/360_F_615769239_P34b7w4Tc2rHBIU87bV3OCsAinGaX1EL.jpg'
             alt="Post image"
           />
         </div>
         <div className="flex items-center mb-4">
-          <img
+          <Image
             className="w-10 h-10 rounded-full"
             src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
             alt="User Avatar"
@@ -46,13 +47,13 @@ const DetailPostCard: React.FC<DetailPostCardProps> = ({ post }) => {
         <p className="text-gray-700 text-lg leading-relaxed mb-4">{post.body}</p>
         <div className="flex justify-between items-center mt-4">
           <div className="flex items-center">
-            <img
+            <Image
               className="w-6 h-6 mr-2"
               src="https://static.vecteezy.com/system/resources/previews/019/860/328/original/like-and-dislike-icons-png.png"
               alt="Likes"
             />
           <span className={"text-sm mr-4 " + (darkMode ? "text-gray-400" : "text-gray-600")}>{post.reactions.likes}</span>
-          <img
+          <Image
               className="w-6 h-6 mr-2"
               src="https://static.vecteezy.com/system/resources/previews/019/860/328/original/like-and-dislike-icons-png.png"
               alt="Dislikes"
