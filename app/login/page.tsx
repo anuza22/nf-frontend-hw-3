@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
       if (username) {
         await login(username, password);
       } else {
-        await loginWithDefaultUser(password);
+        await loginWithDefaultUser();
       }
     } catch (err) {
       console.error('Login failed', err);
@@ -25,10 +25,10 @@ const LoginPage: React.FC = () => {
     window.location.href = '/posts';
      }; 
 
-     const loginWithDefaultUser = async (password: string) => {
+     const loginWithDefaultUser = async () => {
       try {
-        const response = await axios.get('https://dummyjson.com/users/1');
-        const defaultUsername = response.data.username;
+        const defaultUsername = 'emilys';
+        const password = 'passwordpass';
   
         await login(defaultUsername, password);
       } catch (error) {
