@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
      const loginWithDefaultUser = async () => {
       try {
         const defaultUsername = 'emilys';
-        const password = 'passwordpass';
+        const password = 'emilyspass';
   
         await login(defaultUsername, password);
       } catch (error) {
