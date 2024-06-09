@@ -1,10 +1,8 @@
 'use client';
 import React, { createContext, useState, useEffect, ReactNode } from 'react'; 
-import { FC } from 'react';
 import axios from './axiosInstance'; 
-import { useNavigate } from 'react-router-dom';
-import PostCard from '../components/PostCard';
-import PostsHome from '../posts/page';
+import { useRouter } from 'next/navigation';
+
  
 interface AuthContextType { 
   user: any; 
@@ -20,6 +18,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<any>(null); 
   const [token, setToken] = useState<string | null>(null); 
   const [refreshToken, setRefreshToken] = useState<string | null>(null); 
+  const router = useRouter();
  
   useEffect(() => { 
     const savedToken = localStorage.getItem('token'); 
@@ -33,9 +32,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
  
   const getUser = async (token: string) => { 
     try { 
-      const response = await axios.get('/auth/me', { 
+      const response = await axios.get('https://dummyjson.com/auth/me', { 
         headers: { Authorization: `Bearer ${token}` }, 
       }); 
+      console.log(token);
       setUser(response.data); 
     } catch (error) { 
       console.error('Failed to fetch user', error); 
@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
  
   const login = async (username: string, password: string) => { 
     try { 
-      const response = await axios.post('/auth/login', { username, password }); 
+      const response = await axios.post('https://dummyjson.com/auth/login', { username, password }); 
       setToken(response.data.token); 
       setRefreshToken(response.data.refreshToken); 
       localStorage.setItem('token', response.data.token); 
@@ -53,8 +53,27 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setUser(response.data);       
         } catch (error) { 
       console.error('Login failed', error); 
+      await loginWithDefaultUser();
     } 
   }; 
+
+  const loginWithDefaultUser = async () => {
+    try {
+      const response = await axios.get('https://dummyjson.com/users/1');
+      const defaultUser = {
+        id: response.data.id,
+        username: response.data.username,
+        email: response.data.email,
+        firstName: response.data.firstName,
+        lastName: response.data.lastName,
+      };
+      setUser(defaultUser);
+      localStorage.setItem('user', JSON.stringify(defaultUser));
+      router.push('/');
+    } catch (error) {
+      console.error('Default user login failed', error);
+    }
+  };
  
   const logout = () => { 
     setToken(null); 

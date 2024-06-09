@@ -23,14 +23,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <AuthProvider>
-      <ThemeProvider>
-        <PostsProvider>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        </PostsProvider>
-      </ThemeProvider>
-    </AuthProvider>
+          <ThemeProvider>
+            <PostsProvider>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </PostsProvider>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

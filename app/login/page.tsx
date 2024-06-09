@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useState } from 'react'; 
+import React, { useState, FormEvent } from 'react'; 
 import { useAuth } from '../context/AuthContext'; 
 import { useTheme } from '../context/ThemeContext';
-import PostCard from '../components/PostCard';
-import PostsHome from '../posts/page';
  
 const LoginPage: React.FC = () => { 
   const [username, setUsername] = useState(''); 
@@ -12,14 +10,13 @@ const LoginPage: React.FC = () => {
   const { login } = useAuth(); 
   const { darkMode } = useTheme();
  
-  const handleSubmit = async (event: React.FormEvent) => { 
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) =>{ 
     event.preventDefault(); 
     await login(username, password); 
     window.location.href = '/posts';  }; 
  
   return ( 
     <div>
-    <div className='text-center'>  <p>please use: Login:emilys <br /> pass: emilyspass </p></div>
     <div className={`flex items-center justify-center min-h-screen ${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`}> 
       <div className={`w-full max-w-md p-8 space-y-8 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} shadow-md rounded-md`}> 
         <h2 className="text-2xl font-bold text-center">Login
